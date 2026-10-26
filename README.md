@@ -54,3 +54,7 @@ See [reference attribution](docs/REFERENCE.md) for the source of the logo, photo
 ## Validation
 
 `npm run build` checks TypeScript and produces the production build. Browser validation exercises desktop/mobile menus, all category filters, details, search, cart, newsletter, video-dialog lifecycle, and internal links. Responsive checks cover 320, 375, 390, 550, 768, 1024, and 1440 pixels. The on-demand third-party YouTube player is separate from local application checks.
+
+## Vercel
+
+Vercel deployment is configured in `vercel.json` (Vite, `npm ci`, `npm run build`, `dist`). No application environment variables are required. See [Vercel deployment instructions](docs/VERCEL.md) for Git integration, secure CLI access, and deployment checks. `.vercel/` is ignored locally; review documentation and screenshots are excluded from CLI uploads.
