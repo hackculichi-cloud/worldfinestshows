@@ -1,0 +1,265 @@
+.site-footer {
+  --footer-muted: #c3cfe4;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 55px 0 23px;
+  background: #0b1738;
+  color: #fff;
+  border-bottom: 3px solid transparent;
+  border-image: repeating-linear-gradient(
+      90deg,
+      #eb417c 0 65px,
+      #ffda66 65px 130px,
+      #60c9ed 130px 195px,
+      #b8df95 195px 260px
+    )
+    1;
+}
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("/reference/carnival-skyline.png") bottom center / 100% auto
+    no-repeat;
+  opacity: 0.045;
+  pointer-events: none;
+}
+.footer-bunting {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #ffda6640;
+  pointer-events: none;
+}
+.footer-bunting span {
+  display: block;
+  width: 25px;
+  height: 25px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: #ff83b1;
+}
+.footer-bunting span:nth-child(4n + 2) {
+  background: #ffda66;
+}
+.footer-bunting span:nth-child(4n + 3) {
+  background: #8bdcf5;
+}
+.footer-bunting span:nth-child(4n + 4) {
+  background: #b8df95;
+}
+.footer-brand {
+  display: inline-block;
+}
+.footer-brand img {
+  width: 260px;
+  height: auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 55px;
+  margin-top: 27px;
+  padding: 28px 0;
+  border-top: 1px solid #ffffff18;
+}
+.footer-grid > section {
+  min-width: 0;
+}
+.footer-grid h2 {
+  font-family: Merriweather, Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0 0 15px;
+  color: #fff;
+}
+.footer-links nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.footer-links nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 36px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--footer-muted);
+  transition: color 0.2s;
+}
+.footer-links nav a:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer-contact address {
+  font-style: normal;
+  color: var(--footer-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.footer-email {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #ff9fc4;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.footer-email:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: #ffc2da;
+}
+.footer-sales {
+  margin-top: 15px;
+}
+.footer-sales > span {
+  display: block;
+  color: var(--footer-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.footer-social-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-social-icon {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+}
+.footer-social-icon:hover {
+  opacity: 0.75;
+}
+.social-facebook {
+  color: #4e97ff;
+}
+.social-instagram {
+  color: #ff91ba;
+}
+.social-youtube {
+  color: #ff626b;
+}
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ffffff18;
+}
+.footer-bottom > div > span {
+  display: block;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--footer-muted);
+}
+.footer-bottom small {
+  display: block;
+  font-size: 10px;
+  line-height: 1.7;
+  color: #a6b5d0;
+  margin-top: 3px;
+}
+.footer-back-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 12px;
+  color: var(--footer-muted);
+}
+.footer-back-top:hover {
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .footer-grid {
+    gap: 30px;
+    grid-template-columns: 0.9fr 1.4fr 0.9fr;
+  }
+  .footer-social-links {
+    gap: 6px;
+  }
+  .footer-grid h2 {
+    font-size: 19px;
+  }
+  .footer-email {
+    font-size: 13px;
+  }
+}
+@media (max-width: 640px) {
+  .site-footer {
+    padding: 48px 0 22px;
+  }
+  .footer-bunting span {
+    width: 17px;
+    height: 20px;
+  }
+  .footer-brand img {
+    width: 245px;
+    max-width: 100%;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 24px;
+    padding: 26px 0;
+  }
+  .footer-grid h2 {
+    font-size: 20px;
+    margin-bottom: 13px;
+  }
+  .footer-links nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 18px;
+  }
+  .footer-links nav a {
+    font-size: 14px;
+    min-height: 44px;
+  }
+  .footer-contact address {
+    font-size: 14px;
+  }
+  .footer-email {
+    font-size: 14px;
+  }
+  .footer-sales {
+    margin-top: 12px;
+  }
+  .footer-sales > span {
+    font-size: 12px;
+  }
+  .footer-social-links {
+    gap: 14px;
+    margin-left: -7px;
+  }
+  .footer-bottom {
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-top: 17px;
+  }
+  .footer-back-top {
+    margin-left: auto;
+  }
+  .site-footer::before {
+    background-size: auto 180px;
+  }
+}

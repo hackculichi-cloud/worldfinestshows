@@ -6,15 +6,12 @@ import {
   CalendarDays,
   Check,
   ChevronDown,
-  Facebook,
   Info,
-  Instagram,
   Menu,
   Play,
   Search,
   ShoppingCart,
   X,
-  Youtube,
 } from "lucide-react";
 import "@fontsource/roboto/latin-400.css";
 import "@fontsource/roboto/latin-500.css";
@@ -22,6 +19,7 @@ import "@fontsource/roboto/latin-600.css";
 import "@fontsource/roboto/latin-700.css";
 import "@fontsource/merriweather/latin-400.css";
 import "./styles.css";
+import { Footer } from "./components/Footer";
 
 const official = "https://www.worldsfinestshows.com";
 const asset = (name: string) => `${import.meta.env.BASE_URL}reference/${name}`;
@@ -599,15 +597,13 @@ function App() {
               className="button show-all"
               onClick={() => {
                 setActiveCategory("All Attractions");
-                document
-                  .getElementById("attractions")
-                  ?.scrollIntoView({
-                    behavior: window.matchMedia(
-                      "(prefers-reduced-motion: reduce)",
-                    ).matches
-                      ? "instant"
-                      : "smooth",
-                  });
+                document.getElementById("attractions")?.scrollIntoView({
+                  behavior: window.matchMedia(
+                    "(prefers-reduced-motion: reduce)",
+                  ).matches
+                    ? "instant"
+                    : "smooth",
+                });
               }}
             >
               SHOW ALL
@@ -674,80 +670,11 @@ function App() {
         </section>
       </main>
 
-      <footer id="contact" className="site-footer colour-rule">
-        <div className="container footer-panel">
-          <div>
-            <h2>Pages</h2>
-            <nav aria-label="Footer navigation">
-              <a href="#home">Home</a>
-              <a href="#events">Events</a>
-              <a
-                href="#attractions"
-                onClick={() => setActiveCategory("All Attractions")}
-              >
-                Attractions
-              </a>
-              <a
-                href={`${official}/ride-safety/`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Ride Safety <ArrowUpRight size={11} />
-              </a>
-            </nav>
-          </div>
-          <div className="footer-contact">
-            <h2>Contact</h2>
-            <p>
-              PO Box 680, Simcoe, Ontario N3Y 4T2
-              <br />
-              <a href="mailto:info@worldsfinestshows.com">
-                info@worldsfinestshows.com
-              </a>
-            </p>
-            <p className="sales-note">
-              Questions about online sales should be directed to
-              <br />
-              <a href="mailto:websales@worldsfinestshows.com">
-                websales@worldsfinestshows.com
-              </a>
-            </p>
-          </div>
-          <div className="footer-social">
-            <h2>Follow Us</h2>
-            <div>
-              <a
-                href="https://www.facebook.com/worldsfinestshows/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="World’s Finest Shows on Facebook"
-              >
-                <Facebook size={22} />
-              </a>
-              <a
-                href="https://www.instagram.com/wfshows"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="World’s Finest Shows on Instagram"
-              >
-                <Instagram size={22} />
-              </a>
-              <button
-                aria-label="Watch World’s Finest Shows original midway video"
-                onClick={() => setVideoOpen(true)}
-              >
-                <Youtube size={24} />
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="container footer-bottom">
-          <span>World’s Finest Shows · Ontario’s premiere midway provider</span>
-          <span>
-            Independent development preview · Not the official website
-          </span>
-        </div>
-      </footer>
+      <Footer
+        logoSrc={asset("logo.png")}
+        onExploreAttractions={() => setActiveCategory("All Attractions")}
+        onPlayVideo={() => setVideoOpen(true)}
+      />
 
       <dialog
         className={videoOpen ? "detail-dialog video-dialog" : "detail-dialog"}
