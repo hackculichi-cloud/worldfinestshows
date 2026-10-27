@@ -460,3 +460,38 @@
     margin-left: 0;
   }
 }
+
+/* Give the social column a balanced two-row arrangement, keeping icons only. */
+.footer-social-links {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 18px 8px;
+  width: min(100%, 200px);
+  margin: 15px auto 0;
+  padding: 8px 0;
+}
+.footer-social-icon {
+  grid-column: span 2;
+  justify-self: stretch;
+  width: 100%;
+  min-width: 44px;
+  height: 56px;
+}
+.footer-social-icon:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+.footer-social-icon:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+.footer-social-icon > svg {
+  width: 32px;
+  height: 32px;
+}
+@media (min-width: 641px) and (max-width: 900px) {
+  .footer-social-links {
+    column-gap: 4px;
+  }
+  .footer-social-icon {
+    height: 52px;
+  }
+}
