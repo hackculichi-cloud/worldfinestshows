@@ -632,6 +632,11 @@ function App() {
           className="photo-section newsletter-section colour-rule"
           aria-labelledby="newsletter-title"
         >
+          <div className="footer-bunting newsletter-bunting" aria-hidden="true">
+            {Array.from({ length: 14 }, (_, index) => (
+              <span key={index} />
+            ))}
+          </div>
           <div className="container photo-section-inner">
             <SectionTitle title="Newsletter" icon="icon-newsletter.png" />
             <div className="pink-panel newsletter-panel">

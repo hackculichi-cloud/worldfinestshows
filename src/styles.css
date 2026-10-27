@@ -1644,8 +1644,9 @@ img {
   gap: 28px;
 }
 .newsletter-section .section-title {
-  align-self: end;
-  margin-bottom: 55px;
+  align-self: center;
+  margin-bottom: 0;
+  justify-content: center;
 }
 .newsletter-section .section-title h2 {
   font-size: 54px;
@@ -1654,7 +1655,7 @@ img {
   padding: 23px 27px;
   background: rgba(174, 25, 83, 0.62);
   backdrop-filter: none;
-  text-align: right;
+  text-align: center;
 }
 .newsletter-panel h3 {
   font-size: 22px;
@@ -1669,7 +1670,7 @@ img {
   text-align: left;
 }
 .newsletter-panel .signup-success {
-  align-items: flex-end;
+  align-items: center;
 }
 @media (max-width: 900px) {
   .newsletter-section .photo-section-inner {
@@ -1745,4 +1746,8 @@ html {
   :root {
     --header-height: 78px;
   }
+}
+
+.newsletter-bunting {
+  z-index: 1;
 }
