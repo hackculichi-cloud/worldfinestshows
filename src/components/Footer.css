@@ -293,3 +293,170 @@
 .social-google {
   color: #ffda66;
 }
+
+/* A single inset panel on the original carnival skyline background. */
+.site-footer {
+  background: #3b4565;
+  padding-top: 52px;
+  padding-bottom: 30px;
+}
+.site-footer::before {
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+.footer-frame {
+  background: rgba(10, 22, 57, 0.82);
+  border: 1px solid #ffffff12;
+  padding: 28px 34px 19px;
+}
+.footer-grid {
+  gap: 35px;
+  grid-template-columns: 0.9fr 1.4fr 1fr;
+  margin-top: 22px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.footer-page-emoji {
+  font-size: 16px;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+.footer-links nav a {
+  gap: 8px;
+}
+@media (max-width: 640px) {
+  .site-footer {
+    padding-top: 40px;
+    padding-bottom: 24px;
+  }
+  .footer-frame {
+    padding: 23px 20px 16px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .footer-brand img {
+    max-width: 100%;
+  }
+  .footer-email {
+    font-size: 13px;
+  }
+  .footer-links nav {
+    column-gap: 10px;
+  }
+  .footer-links nav a {
+    font-size: 13px;
+    gap: 5px;
+  }
+}
+@media (max-width: 360px) {
+  .footer-links nav {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Center and tighten the panel while retaining all of its links. */
+.footer-frame {
+  max-width: 1040px;
+  padding: 23px 28px 16px;
+  text-align: center;
+}
+.footer-brand {
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+}
+.footer-brand img {
+  width: 230px;
+}
+.footer-grid {
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 24px;
+  margin-top: 18px;
+  padding: 20px 0;
+}
+.footer-grid h2 {
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.footer-links nav {
+  align-items: center;
+}
+.footer-links nav a {
+  min-height: 32px;
+}
+.footer-social-links {
+  justify-content: center;
+  margin-left: 0;
+}
+.footer-contact address {
+  font-size: 13px;
+}
+.footer-sales {
+  margin-top: 9px;
+}
+.footer-email {
+  min-height: 38px;
+  font-size: 13px;
+}
+.footer-bottom {
+  padding-top: 14px;
+}
+.footer-back-top {
+  gap: 10px;
+  padding: 6px 8px 6px 15px;
+  min-height: 44px;
+  border: 1px solid #ffda6655;
+  border-radius: 24px;
+  color: #ffda66;
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    border-color 0.2s;
+}
+.footer-back-top > svg {
+  box-sizing: content-box;
+  padding: 7px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #eb417c;
+  color: white;
+  transition: transform 0.2s;
+}
+.footer-back-top:hover,
+.footer-back-top:focus-visible {
+  background: #eb417c20;
+  border-color: #ff83b1;
+  color: white;
+  transform: translateY(-2px);
+}
+.footer-back-top:hover > svg {
+  transform: translateY(-3px);
+}
+@media (max-width: 640px) {
+  .footer-frame {
+    padding: 22px 18px 16px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 23px;
+  }
+  .footer-links nav {
+    justify-items: center;
+  }
+  .footer-links nav a {
+    min-height: 44px;
+  }
+  .footer-bottom {
+    justify-content: center;
+    gap: 12px;
+  }
+  .footer-back-top {
+    margin-left: 0;
+  }
+}
