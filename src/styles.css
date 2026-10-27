@@ -1751,3 +1751,47 @@ html {
 .newsletter-bunting {
   z-index: 1;
 }
+
+.safety-page {
+  padding-top: 50px;
+  padding-bottom: 60px;
+  max-width: 950px;
+}
+.safety-back {
+  color: #a51f53;
+  font-size: 14px;
+}
+.safety-page h1 {
+  color: var(--navy);
+  font-size: clamp(32px, 5vw, 52px);
+  margin: 25px 0;
+}
+.safety-intro {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #536078;
+}
+.safety-page section {
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+.safety-page h2 {
+  font-size: 24px;
+  color: var(--navy);
+}
+.safety-page p,
+.safety-page li {
+  line-height: 1.85;
+}
+.safety-page li {
+  margin-bottom: 10px;
+}
+.safety-page p a {
+  color: #a51f53;
+  text-decoration: underline;
+}
+.safety-source {
+  font-size: 12px;
+  color: #536078;
+  margin-top: 28px;
+}

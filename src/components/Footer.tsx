@@ -1,11 +1,4 @@
-import {
-  Mail,
-  Music2,
-  ArrowUpRight,
-  Facebook,
-  Instagram,
-  Youtube,
-} from "lucide-react";
+import { Mail, Music2, Facebook, Instagram, Youtube } from "lucide-react";
 import "./Footer.css";
 
 interface FooterProps {
@@ -14,6 +7,9 @@ interface FooterProps {
 }
 
 export function Footer({ onExploreAttractions, onPlayVideo }: FooterProps) {
+  const homePrefix = window.location.pathname.endsWith("/ride-safety.html")
+    ? "./"
+    : "";
   return (
     <footer
       id="contact"
@@ -34,39 +30,32 @@ export function Footer({ onExploreAttractions, onPlayVideo }: FooterProps) {
           >
             <h2 id="footer-links-title">Pages</h2>
             <nav aria-label="Footer navigation">
-              <a href="#home">
-                <span className="footer-page-emoji" aria-hidden="true">
-                  🏠
-                </span>
-                Home
-              </a>
-              <a href="#events">
+              <a href={`${homePrefix}#events`}>
                 <span className="footer-page-emoji" aria-hidden="true">
                   📅
                 </span>
                 Events
               </a>
-              <a href="#attractions" onClick={onExploreAttractions}>
+              <a
+                href={`${homePrefix}#attractions`}
+                onClick={onExploreAttractions}
+              >
                 <span className="footer-page-emoji" aria-hidden="true">
                   🎡
                 </span>
                 Attractions
               </a>
-              <a href="#passes">
+              <a href={`${homePrefix}#passes`}>
                 <span className="footer-page-emoji" aria-hidden="true">
                   🎟️
                 </span>
                 Mega Passes
               </a>
-              <a
-                href="https://www.worldsfinestshows.com/ride-safety/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="./ride-safety.html" rel="noreferrer">
                 <span className="footer-page-emoji" aria-hidden="true">
                   🛡️
                 </span>
-                Ride safety <ArrowUpRight size={12} />
+                Ride safety
               </a>
             </nav>
           </section>
