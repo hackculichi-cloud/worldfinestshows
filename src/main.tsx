@@ -145,6 +145,22 @@ function App() {
     return () => window.removeEventListener("keydown", close);
   }, []);
 
+  const headerRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const dismissOutside = (event: PointerEvent) => {
+      if (
+        event.target instanceof Node &&
+        !headerRef.current?.contains(event.target)
+      ) {
+        setDropdown(null);
+        setMenuOpen(false);
+        setSearchOpen(false);
+      }
+    };
+    document.addEventListener("pointerdown", dismissOutside);
+    return () => document.removeEventListener("pointerdown", dismissOutside);
+  }, []);
+
   const closeDialog = () => {
     setSelected(null);
     setCartOpen(false);
@@ -164,7 +180,7 @@ function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="site-header">
+      <header className="site-header" ref={headerRef}>
         <div className="header-inner container">
           <a
             href="#home"

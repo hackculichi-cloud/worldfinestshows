@@ -218,7 +218,24 @@ export function Footer({
           <div>
             <span>© {new Date().getFullYear()} World’s Finest Shows</span>
           </div>
-          <a className="footer-back-top" href="#home">
+          <a
+            className="footer-back-top"
+            href="#home"
+            onClick={(event) => {
+              event.preventDefault();
+              window.history.replaceState(null, "", "#home");
+              window.scrollTo({
+                top: 0,
+                behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+                  .matches
+                  ? "instant"
+                  : "smooth",
+              });
+              document
+                .querySelector<HTMLAnchorElement>(".site-header .brand")
+                ?.focus({ preventScroll: true });
+            }}
+          >
             Back to top <ArrowUp size={15} />
           </a>
         </div>
