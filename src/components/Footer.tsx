@@ -1,4 +1,7 @@
 import {
+  Mail,
+  Link,
+  Music2,
   ArrowUp,
   ArrowUpRight,
   Facebook,
@@ -50,7 +53,9 @@ export function Footer({
             className="footer-links"
             aria-labelledby="footer-links-title"
           >
-            <h2 id="footer-links-title">Quick links</h2>
+            <h2 id="footer-links-title">
+              <Link size={18} aria-hidden="true" /> Quick links
+            </h2>
             <nav aria-label="Footer navigation">
               <a href="#home">Home</a>
               <a href="#events">Events</a>
@@ -72,7 +77,9 @@ export function Footer({
             className="footer-contact"
             aria-labelledby="footer-contact-title"
           >
-            <h2 id="footer-contact-title">Contact</h2>
+            <h2 id="footer-contact-title">
+              <Mail size={18} aria-hidden="true" /> Contact
+            </h2>
             <address>
               PO Box 680, Simcoe, Ontario
               <br />
@@ -143,6 +150,26 @@ export function Footer({
               >
                 <Youtube size={30} />
               </button>
+              <a
+                className="footer-social-icon social-tiktok"
+                href="https://www.tiktok.com/search?q=worlds%20finest%20shows"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Search World’s Finest Shows on TikTok"
+                title="Search on TikTok"
+              >
+                <Music2 size={27} />
+              </a>
+              <a
+                className="footer-social-icon social-google"
+                href="https://www.google.com/search?q=World%27s+Finest+Shows+Ontario"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Find World’s Finest Shows on Google"
+                title="Find us on Google"
+              >
+                <svg width="26" height="26" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3A12 12 0 1 1 32 14l5.7-5.7A20 20 0 1 0 44 24c0-1.2-.1-2.4-.4-3.5Z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8A12 12 0 0 1 32 14l5.7-5.7A20 20 0 0 0 6.3 14.7Z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.8-2 13.3-5.2l-6.2-5.2a12 12 0 0 1-18.3-5.1l-6.6 5.1A20 20 0 0 0 24 44Z"/><path fill="#4285F4" d="M43.6 20.5H42V20H24v8h11.3a12 12 0 0 1-4.2 5.6l6.2 5.2A20 20 0 0 0 44 24c0-1.2-.1-2.4-.4-3.5Z"/></svg>
+              </a>
             </div>
           </section>
         </div>
@@ -150,9 +177,6 @@ export function Footer({
         <div className="footer-bottom">
           <div>
             <span>© {new Date().getFullYear()} World’s Finest Shows</span>
-            <small>
-              Independent development preview · Not the official website
-            </small>
           </div>
           <a className="footer-back-top" href="#home">
             Back to top <ArrowUp size={15} />

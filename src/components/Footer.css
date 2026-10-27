@@ -263,3 +263,33 @@
     background-size: auto 180px;
   }
 }
+
+/* Small fairground accents, keeping the footer compact. */
+.footer-grid h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.footer-grid h2 > svg {
+  color: #ffda66;
+}
+.footer-contact h2 > svg {
+  color: #ff9fc4;
+}
+.footer-social-links {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.footer-social-icon {
+  filter: drop-shadow(0 0 5px currentColor);
+}
+.footer-social-icon:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+.social-tiktok {
+  color: #7cf4ec;
+}
+.social-google {
+  color: #ffda66;
+}
