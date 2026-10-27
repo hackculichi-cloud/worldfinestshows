@@ -1,3 +1,4 @@
+import { RideSafety } from "./components/RideSafety";
 import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -98,6 +99,9 @@ function SectionTitle({ title, icon }: { title: string; icon: string }) {
   );
 }
 
+const isSafetyPage = window.location.pathname.endsWith("/ride-safety.html");
+const pageLink = (hash: string) => (isSafetyPage ? `./${hash}` : hash);
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdown, setDropdown] = useState<"about" | "attractions" | null>(
@@ -183,7 +187,7 @@ function App() {
       <header className="site-header" ref={headerRef}>
         <div className="header-inner container">
           <a
-            href="#home"
+            href={pageLink("#home")}
             className="brand"
             aria-label="World’s Finest Shows home"
             onClick={closeMenu}
@@ -199,7 +203,11 @@ function App() {
             className={menuOpen ? "main-nav is-open" : "main-nav"}
             aria-label="Main navigation"
           >
-            <a className="home-link" href="#home" onClick={closeMenu}>
+            <a
+              className="home-link"
+              href={pageLink("#home")}
+              onClick={closeMenu}
+            >
               Home
             </a>
             <div className="nav-dropdown">
@@ -223,8 +231,12 @@ function App() {
                   ].map(([title, path]) => (
                     <a
                       key={path}
-                      href={official + path}
-                      target="_blank"
+                      href={
+                        path === "/ride-safety/"
+                          ? "./ride-safety.html"
+                          : official + path
+                      }
+                      target={path === "/ride-safety/" ? undefined : "_blank"}
                       rel="noreferrer"
                       onClick={closeMenu}
                     >
@@ -234,7 +246,7 @@ function App() {
                 </div>
               )}
             </div>
-            <a href="#events" onClick={closeMenu}>
+            <a href={pageLink("#events")} onClick={closeMenu}>
               Events
             </a>
             <div className="nav-dropdown">
@@ -253,7 +265,7 @@ function App() {
                     (name) => (
                       <a
                         key={name}
-                        href="#attractions"
+                        href={pageLink("#attractions")}
                         onClick={() => filterAttractions(name)}
                       >
                         {name}
@@ -263,7 +275,7 @@ function App() {
                 </div>
               )}
             </div>
-            <a href="#contact" onClick={closeMenu}>
+            <a href={pageLink("#contact")} onClick={closeMenu}>
               Contact
             </a>
           </nav>
@@ -343,350 +355,368 @@ function App() {
         )}
       </header>
 
-      <main id="main">
-        <section
-          id="home"
-          className="hero colour-rule"
-          aria-labelledby="hero-title"
-        >
-          <div
-            className="hero-photo"
-            role="img"
-            aria-label="The World’s Finest Shows Ferris wheel under a bright blue sky"
-          />
-          <div className="hero-inner container">
-            <button className="watch-video" onClick={() => setVideoOpen(true)}>
-              <span>
-                <Play size={17} fill="currentColor" />
-              </span>
-              Watch the midway
-            </button>
-            <div className="hero-panel">
-              <h1 id="hero-title">World’s Finest Shows</h1>
-              <p>
-                Ontario’s premiere midway provider. We provide world-class fun
-                to over 50 fairs, festivals, and events each year.{" "}
-                <a
-                  href="#attractions"
-                  onClick={() => setActiveCategory("Games")}
-                >
-                  Exciting games
-                </a>
-                ,{" "}
-                <a
-                  href="#attractions"
-                  onClick={() => setActiveCategory("Concessions")}
-                >
-                  delicious food
-                </a>
-                , and{" "}
-                <a
-                  href="#attractions"
-                  onClick={() => setActiveCategory("Thrill Rides")}
-                >
-                  thrill rides
-                </a>
-                , and{" "}
-                <a
-                  href="#attractions"
-                  onClick={() => setActiveCategory("Kids Rides")}
-                >
-                  kids rides
-                </a>
-                .
-              </p>
-              <div className="quick-links">
-                {quickLinks.map((link) => (
+      {isSafetyPage ? (
+        <RideSafety />
+      ) : (
+        <main id="main">
+          <section
+            id="home"
+            className="hero colour-rule"
+            aria-labelledby="hero-title"
+          >
+            <div
+              className="hero-photo"
+              role="img"
+              aria-label="The World’s Finest Shows Ferris wheel under a bright blue sky"
+            />
+            <div className="hero-inner container">
+              <button
+                className="watch-video"
+                onClick={() => setVideoOpen(true)}
+              >
+                <span>
+                  <Play size={17} fill="currentColor" />
+                </span>
+                Watch the midway
+              </button>
+              <div className="hero-panel">
+                <h1 id="hero-title">World’s Finest Shows</h1>
+                <p>
+                  Ontario’s premiere midway provider. We provide world-class fun
+                  to over 50 fairs, festivals, and events each year.{" "}
                   <a
-                    href={link.href}
-                    key={link.title}
-                    aria-label={link.title}
-                    onClick={() => {
-                      if (link.title === "Attractions")
-                        setActiveCategory("All Attractions");
-                    }}
+                    href={pageLink("#attractions")}
+                    onClick={() => setActiveCategory("Games")}
                   >
-                    <img
-                      src={asset(link.icon)}
-                      alt={link.title}
-                      width="76"
-                      height="76"
-                    />
+                    Exciting games
                   </a>
-                ))}
+                  ,{" "}
+                  <a
+                    href={pageLink("#attractions")}
+                    onClick={() => setActiveCategory("Concessions")}
+                  >
+                    delicious food
+                  </a>
+                  , and{" "}
+                  <a
+                    href={pageLink("#attractions")}
+                    onClick={() => setActiveCategory("Thrill Rides")}
+                  >
+                    thrill rides
+                  </a>
+                  , and{" "}
+                  <a
+                    href={pageLink("#attractions")}
+                    onClick={() => setActiveCategory("Kids Rides")}
+                  >
+                    kids rides
+                  </a>
+                  .
+                </p>
+                <div className="quick-links">
+                  {quickLinks.map((link) => (
+                    <a
+                      href={link.href}
+                      key={link.title}
+                      aria-label={link.title}
+                      onClick={() => {
+                        if (link.title === "Attractions")
+                          setActiveCategory("All Attractions");
+                      }}
+                    >
+                      <img
+                        src={asset(link.icon)}
+                        alt={link.title}
+                        width="76"
+                        height="76"
+                      />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section
-          id="passes"
-          className="skyline-section passes-section colour-rule"
-          aria-labelledby="passes-title"
-        >
-          <div className="container">
-            <SectionTitle title="Mega Passes" icon="icon-passes.png" />
-            <p className="section-intro">Your next great day starts here.</p>
-            <div className="pass-grid">
-              <article className="pass-card">
-                <a
-                  href={`${official}/event/norfolk-county-fair-horse-show/`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="pass-image"
-                  aria-label="Official Norfolk County Fair and Horse Show details"
-                >
-                  <img
-                    src={asset("norfolk-fair.jpg")}
-                    alt="Norfolk County Fair Ferris wheel"
-                    width="750"
-                    height="750"
-                    loading="lazy"
-                  />
-                </a>
-                <div className="pass-content">
-                  <h3>
-                    <a
-                      href={`${official}/event/norfolk-county-fair-horse-show/`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Norfolk County Fair &amp; Horse Show
-                    </a>
-                  </h3>
-                  <p>
-                    Online sales are handled by Norfolk County Fair &amp; Horse
-                    Show.
-                  </p>
-                  <p>
-                    Visit the official event page for ticket information and
-                    current availability.
-                  </p>
+          <section
+            id="passes"
+            className="skyline-section passes-section colour-rule"
+            aria-labelledby="passes-title"
+          >
+            <div className="container">
+              <SectionTitle title="Mega Passes" icon="icon-passes.png" />
+              <p className="section-intro">Your next great day starts here.</p>
+              <div className="pass-grid">
+                <article className="pass-card">
                   <a
                     href={`${official}/event/norfolk-county-fair-horse-show/`}
                     target="_blank"
                     rel="noreferrer"
-                    className="read-more"
+                    className="pass-image"
+                    aria-label="Official Norfolk County Fair and Horse Show details"
                   >
-                    Read More »
-                    <span className="sr-only">
-                      {" "}
-                      about Norfolk County Fair &amp; Horse Show
-                    </span>
+                    <img
+                      src={asset("norfolk-fair.jpg")}
+                      alt="Norfolk County Fair Ferris wheel"
+                      width="750"
+                      height="750"
+                      loading="lazy"
+                    />
                   </a>
-                </div>
-              </article>
-              <article className="pass-card">
-                <a
-                  href={`${official}/event/brigden-fair/`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="pass-image"
-                  aria-label="Official Brigden Fair details"
-                >
-                  <img
-                    src={asset("brigden-fair.jpg")}
-                    alt="Brigden Fair Ferris wheel"
-                    width="750"
-                    height="750"
-                    loading="lazy"
-                  />
-                </a>
-                <div className="pass-content">
-                  <h3>
+                  <div className="pass-content">
+                    <h3>
+                      <a
+                        href={`${official}/event/norfolk-county-fair-horse-show/`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Norfolk County Fair &amp; Horse Show
+                      </a>
+                    </h3>
+                    <p>
+                      Online sales are handled by Norfolk County Fair &amp;
+                      Horse Show.
+                    </p>
+                    <p>
+                      Visit the official event page for ticket information and
+                      current availability.
+                    </p>
                     <a
-                      href={`${official}/event/brigden-fair/`}
+                      href={`${official}/event/norfolk-county-fair-horse-show/`}
                       target="_blank"
                       rel="noreferrer"
+                      className="read-more"
                     >
-                      Brigden Fair
+                      Read More »
+                      <span className="sr-only">
+                        {" "}
+                        about Norfolk County Fair &amp; Horse Show
+                      </span>
                     </a>
-                  </h3>
-                  <p>More midway memories, more reasons to smile.</p>
-                  <p>
-                    See the official event page for ticket details,
-                    availability, and updates.
-                  </p>
+                  </div>
+                </article>
+                <article className="pass-card">
                   <a
                     href={`${official}/event/brigden-fair/`}
                     target="_blank"
                     rel="noreferrer"
-                    className="read-more"
-                  >
-                    Read More »
-                    <span className="sr-only"> about Brigden Fair</span>
-                  </a>
-                </div>
-              </article>
-            </div>
-            <p className="ticket-note">
-              <Info size={14} /> Reference events from the official site. This
-              preview does not sell tickets.
-            </p>
-          </div>
-        </section>
-
-        <section
-          id="events"
-          className="photo-section events-section colour-rule"
-          aria-labelledby="events-title"
-        >
-          <div className="container photo-section-inner">
-            <SectionTitle title="Events" icon="icon-events.png" />
-            <div className="pink-panel event-panel">
-              <h3>Upcoming Events</h3>
-              <p className="empty-events">
-                <CalendarDays size={22} />
-                <span>There are no upcoming events.</span>
-              </p>
-              <p className="calendar-note">
-                Official calendar snapshot · October 26, 2026
-              </p>
-              <a href={`${official}/events/`} target="_blank" rel="noreferrer">
-                Check the official calendar <ArrowUpRight size={15} />
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section
-          id="attractions"
-          className="skyline-section attractions-section colour-rule"
-          aria-labelledby="attractions-title"
-        >
-          <div className="container">
-            <SectionTitle title="Attractions" icon="icon-attractions.png" />
-            <div
-              className="attraction-filters"
-              role="group"
-              aria-label="Filter attractions"
-            >
-              {[
-                "All Attractions",
-                "Kids Rides",
-                "Family Rides",
-                "Thrill Rides",
-                "Games",
-                "Concessions",
-                "Guest Amenities",
-              ].map((name) => (
-                <button
-                  key={name}
-                  aria-pressed={name === activeCategory}
-                  className={name === activeCategory ? "active" : ""}
-                  onClick={() => setActiveCategory(name)}
-                >
-                  {name}
-                </button>
-              ))}
-            </div>
-            <div className="attraction-grid">
-              {filteredCategories.map((category) => (
-                <article key={category.name} className="attraction-card">
-                  <button
-                    className="attraction-image"
-                    aria-label={`Explore ${category.name}`}
-                    onClick={() => setSelected(category)}
+                    className="pass-image"
+                    aria-label="Official Brigden Fair details"
                   >
                     <img
-                      src={asset(category.image)}
-                      alt={category.alt}
+                      src={asset("brigden-fair.jpg")}
+                      alt="Brigden Fair Ferris wheel"
+                      width="750"
+                      height="750"
                       loading="lazy"
-                      width="460"
-                      height="306"
                     />
-                  </button>
-                  <div className="attraction-copy">
-                    <h3>{category.name}</h3>
-                    <button
-                      className="show-category"
-                      onClick={() => setSelected(category)}
+                  </a>
+                  <div className="pass-content">
+                    <h3>
+                      <a
+                        href={`${official}/event/brigden-fair/`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Brigden Fair
+                      </a>
+                    </h3>
+                    <p>More midway memories, more reasons to smile.</p>
+                    <p>
+                      See the official event page for ticket details,
+                      availability, and updates.
+                    </p>
+                    <a
+                      href={`${official}/event/brigden-fair/`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="read-more"
                     >
-                      Show All <span className="sr-only">{category.name}</span>
-                      <ArrowRight size={14} />
-                    </button>
+                      Read More »
+                      <span className="sr-only"> about Brigden Fair</span>
+                    </a>
                   </div>
                 </article>
+              </div>
+              <p className="ticket-note">
+                <Info size={14} /> Reference events from the official site. This
+                preview does not sell tickets.
+              </p>
+            </div>
+          </section>
+
+          <section
+            id="events"
+            className="photo-section events-section colour-rule"
+            aria-labelledby="events-title"
+          >
+            <div className="container photo-section-inner">
+              <SectionTitle title="Events" icon="icon-events.png" />
+              <div className="pink-panel event-panel">
+                <h3>Upcoming Events</h3>
+                <p className="empty-events">
+                  <CalendarDays size={22} />
+                  <span>There are no upcoming events.</span>
+                </p>
+                <p className="calendar-note">
+                  Official calendar snapshot · October 26, 2026
+                </p>
+                <a
+                  href={`${official}/events/`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Check the official calendar <ArrowUpRight size={15} />
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="attractions"
+            className="skyline-section attractions-section colour-rule"
+            aria-labelledby="attractions-title"
+          >
+            <div className="container">
+              <SectionTitle title="Attractions" icon="icon-attractions.png" />
+              <div
+                className="attraction-filters"
+                role="group"
+                aria-label="Filter attractions"
+              >
+                {[
+                  "All Attractions",
+                  "Kids Rides",
+                  "Family Rides",
+                  "Thrill Rides",
+                  "Games",
+                  "Concessions",
+                  "Guest Amenities",
+                ].map((name) => (
+                  <button
+                    key={name}
+                    aria-pressed={name === activeCategory}
+                    className={name === activeCategory ? "active" : ""}
+                    onClick={() => setActiveCategory(name)}
+                  >
+                    {name}
+                  </button>
+                ))}
+              </div>
+              <div className="attraction-grid">
+                {filteredCategories.map((category) => (
+                  <article key={category.name} className="attraction-card">
+                    <button
+                      className="attraction-image"
+                      aria-label={`Explore ${category.name}`}
+                      onClick={() => setSelected(category)}
+                    >
+                      <img
+                        src={asset(category.image)}
+                        alt={category.alt}
+                        loading="lazy"
+                        width="460"
+                        height="306"
+                      />
+                    </button>
+                    <div className="attraction-copy">
+                      <h3>{category.name}</h3>
+                      <button
+                        className="show-category"
+                        onClick={() => setSelected(category)}
+                      >
+                        Show All{" "}
+                        <span className="sr-only">{category.name}</span>
+                        <ArrowRight size={14} />
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <button
+                className="button show-all"
+                onClick={() => {
+                  setActiveCategory("All Attractions");
+                  document.getElementById("attractions")?.scrollIntoView({
+                    behavior: window.matchMedia(
+                      "(prefers-reduced-motion: reduce)",
+                    ).matches
+                      ? "instant"
+                      : "smooth",
+                  });
+                }}
+              >
+                SHOW ALL
+              </button>
+            </div>
+          </section>
+
+          <section
+            id="newsletter"
+            className="photo-section newsletter-section colour-rule"
+            aria-labelledby="newsletter-title"
+          >
+            <div
+              className="footer-bunting newsletter-bunting"
+              aria-hidden="true"
+            >
+              {Array.from({ length: 14 }, (_, index) => (
+                <span key={index} />
               ))}
             </div>
-            <button
-              className="button show-all"
-              onClick={() => {
-                setActiveCategory("All Attractions");
-                document.getElementById("attractions")?.scrollIntoView({
-                  behavior: window.matchMedia(
-                    "(prefers-reduced-motion: reduce)",
-                  ).matches
-                    ? "instant"
-                    : "smooth",
-                });
-              }}
-            >
-              SHOW ALL
-            </button>
-          </div>
-        </section>
-
-        <section
-          id="newsletter"
-          className="photo-section newsletter-section colour-rule"
-          aria-labelledby="newsletter-title"
-        >
-          <div className="footer-bunting newsletter-bunting" aria-hidden="true">
-            {Array.from({ length: 14 }, (_, index) => (
-              <span key={index} />
-            ))}
-          </div>
-          <div className="container photo-section-inner">
-            <SectionTitle title="Newsletter" icon="icon-newsletter.png" />
-            <div className="pink-panel newsletter-panel">
-              {signedUp ? (
-                <div className="signup-success" role="status">
-                  <Check size={28} />
-                  <h3>Subscriptions coming soon</h3>
-                  <p>
-                    Email subscriptions are not available yet. Please check back
-                    soon.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setSignedUp(false);
-                      setEmail("");
-                    }}
-                  >
-                    Try another email <ArrowRight size={15} />
-                  </button>
-                </div>
-              ) : (
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSignedUp(true);
-                  }}
-                >
-                  <h3>A little more midway magic.</h3>
-                  <p>Good times, straight to your inbox.</p>
-                  <label htmlFor="newsletter-email">Email address</label>
-                  <div className="newsletter-input">
-                    <input
-                      id="newsletter-email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="you@example.com"
-                      autoComplete="email"
-                      required
-                    />
-                    <button type="submit" aria-label="Subscribe to newsletter">
-                      <ArrowRight size={22} />
+            <div className="container photo-section-inner">
+              <SectionTitle title="Newsletter" icon="icon-newsletter.png" />
+              <div className="pink-panel newsletter-panel">
+                {signedUp ? (
+                  <div className="signup-success" role="status">
+                    <Check size={28} />
+                    <h3>Subscriptions coming soon</h3>
+                    <p>
+                      Email subscriptions are not available yet. Please check
+                      back soon.
+                    </p>
+                    <button
+                      onClick={() => {
+                        setSignedUp(false);
+                        setEmail("");
+                      }}
+                    >
+                      Try another email <ArrowRight size={15} />
                     </button>
                   </div>
-                </form>
-              )}
+                ) : (
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setSignedUp(true);
+                    }}
+                  >
+                    <h3>A little more midway magic.</h3>
+                    <p>Good times, straight to your inbox.</p>
+                    <label htmlFor="newsletter-email">Email address</label>
+                    <div className="newsletter-input">
+                      <input
+                        id="newsletter-email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="you@example.com"
+                        autoComplete="email"
+                        required
+                      />
+                      <button
+                        type="submit"
+                        aria-label="Subscribe to newsletter"
+                      >
+                        <ArrowRight size={22} />
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
+        </main>
+      )}
 
       <Footer
         onExploreAttractions={() => setActiveCategory("All Attractions")}
@@ -771,7 +801,11 @@ function App() {
               Your preview cart is empty. Ticket purchases are handled on the
               official website; this mockup does not accept payments.
             </p>
-            <a className="button" href="#passes" onClick={closeDialog}>
+            <a
+              className="button"
+              href={pageLink("#passes")}
+              onClick={closeDialog}
+            >
               Explore Mega Passes <ArrowRight size={17} />
             </a>
           </div>
