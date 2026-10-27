@@ -293,3 +293,67 @@
 .social-google {
   color: #ffda66;
 }
+
+/* A single inset panel on the original carnival skyline background. */
+.site-footer {
+  background: #3b4565;
+  padding-top: 52px;
+  padding-bottom: 30px;
+}
+.site-footer::before {
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+.footer-frame {
+  background: rgba(10, 22, 57, 0.82);
+  border: 1px solid #ffffff12;
+  padding: 28px 34px 19px;
+}
+.footer-grid {
+  gap: 35px;
+  grid-template-columns: 0.9fr 1.4fr 1fr;
+  margin-top: 22px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.footer-page-emoji {
+  font-size: 16px;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+.footer-links nav a {
+  gap: 8px;
+}
+@media (max-width: 640px) {
+  .site-footer {
+    padding-top: 40px;
+    padding-bottom: 24px;
+  }
+  .footer-frame {
+    padding: 23px 20px 16px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .footer-brand img {
+    max-width: 100%;
+  }
+  .footer-email {
+    font-size: 13px;
+  }
+  .footer-links nav {
+    column-gap: 10px;
+  }
+  .footer-links nav a {
+    font-size: 13px;
+    gap: 5px;
+  }
+}
+@media (max-width: 360px) {
+  .footer-links nav {
+    grid-template-columns: 1fr;
+  }
+}

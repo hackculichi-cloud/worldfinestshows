@@ -1635,46 +1635,75 @@ img {
   }
 }
 
-/* Keep the newsletter below the riders' faces. */
+/* Compact, rectangular newsletter, matching the reference proportions. */
 .newsletter-section .photo-section-inner {
-  min-height: 650px;
-  align-items: end;
-  padding-top: 350px;
+  min-height: 380px;
+  align-items: center;
+  padding-top: 35px;
   padding-bottom: 35px;
   gap: 24px;
 }
 .newsletter-section .section-title {
-  align-self: end;
-  margin-bottom: 35px;
+  align-self: center;
+  margin-bottom: 0;
+}
+.newsletter-section .section-title h2 {
+  font-size: 54px;
 }
 .newsletter-section .newsletter-panel {
-  background: rgba(174, 25, 83, 0.65);
+  padding: 23px 27px;
+  background: rgba(174, 25, 83, 0.62);
   backdrop-filter: none;
 }
-@media (max-width: 780px) {
+.newsletter-panel h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+.newsletter-panel p {
+  margin-bottom: 16px;
+}
+.newsletter-input input {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+@media (max-width: 900px) {
   .newsletter-section .photo-section-inner {
-    min-height: 700px;
-    padding-top: 320px;
-    gap: 22px;
+    min-height: 360px;
+    gap: 20px;
+  }
+  .newsletter-section .section-title h2 {
+    font-size: 44px;
+  }
+  .newsletter-section .section-title > img {
+    width: 55px;
+    height: 55px;
+  }
+  .newsletter-section .newsletter-panel {
+    padding: 22px;
   }
 }
 @media (max-width: 550px) {
   .newsletter-section {
-    background-size: auto 380px;
-    background-position: top center;
-    background-color: #0b1738;
+    background-size: cover;
+    background-position: center;
   }
   .newsletter-section .photo-section-inner {
-    min-height: 0;
-    padding-top: 395px;
-    padding-bottom: 30px;
-    gap: 22px;
+    min-height: 390px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    gap: 24px;
   }
   .newsletter-section .section-title {
     align-self: stretch;
-    margin-bottom: 0;
+  }
+  .newsletter-section .section-title h2 {
+    font-size: 38px;
+  }
+  .newsletter-section .section-title > img {
+    width: 47px;
+    height: 47px;
   }
   .newsletter-section .newsletter-panel {
-    background: rgba(174, 25, 83, 0.7);
+    padding: 22px;
   }
 }

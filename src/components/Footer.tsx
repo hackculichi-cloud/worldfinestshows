@@ -1,6 +1,5 @@
 import {
   Mail,
-  Link,
   Music2,
   ArrowUp,
   ArrowUpRight,
@@ -33,7 +32,7 @@ export function Footer({
         ))}
       </div>
 
-      <div className="container">
+      <div className="container footer-frame">
         <a
           className="footer-brand"
           href="#home"
@@ -53,21 +52,40 @@ export function Footer({
             className="footer-links"
             aria-labelledby="footer-links-title"
           >
-            <h2 id="footer-links-title">
-              <Link size={18} aria-hidden="true" /> Quick links
-            </h2>
+            <h2 id="footer-links-title">Pages</h2>
             <nav aria-label="Footer navigation">
-              <a href="#home">Home</a>
-              <a href="#events">Events</a>
+              <a href="#home">
+                <span className="footer-page-emoji" aria-hidden="true">
+                  🏠
+                </span>
+                Home
+              </a>
+              <a href="#events">
+                <span className="footer-page-emoji" aria-hidden="true">
+                  📅
+                </span>
+                Events
+              </a>
               <a href="#attractions" onClick={onExploreAttractions}>
+                <span className="footer-page-emoji" aria-hidden="true">
+                  🎡
+                </span>
                 Attractions
               </a>
-              <a href="#passes">Mega Passes</a>
+              <a href="#passes">
+                <span className="footer-page-emoji" aria-hidden="true">
+                  🎟️
+                </span>
+                Mega Passes
+              </a>
               <a
                 href="https://www.worldsfinestshows.com/ride-safety/"
                 target="_blank"
                 rel="noreferrer"
               >
+                <span className="footer-page-emoji" aria-hidden="true">
+                  🛡️
+                </span>
                 Ride safety <ArrowUpRight size={12} />
               </a>
             </nav>
@@ -168,7 +186,29 @@ export function Footer({
                 aria-label="Find World’s Finest Shows on Google"
                 title="Find us on Google"
               >
-                <svg width="26" height="26" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3A12 12 0 1 1 32 14l5.7-5.7A20 20 0 1 0 44 24c0-1.2-.1-2.4-.4-3.5Z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8A12 12 0 0 1 32 14l5.7-5.7A20 20 0 0 0 6.3 14.7Z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.8-2 13.3-5.2l-6.2-5.2a12 12 0 0 1-18.3-5.1l-6.6 5.1A20 20 0 0 0 24 44Z"/><path fill="#4285F4" d="M43.6 20.5H42V20H24v8h11.3a12 12 0 0 1-4.2 5.6l6.2 5.2A20 20 0 0 0 44 24c0-1.2-.1-2.4-.4-3.5Z"/></svg>
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 48 48"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill="#FFC107"
+                    d="M43.6 20.5H42V20H24v8h11.3A12 12 0 1 1 32 14l5.7-5.7A20 20 0 1 0 44 24c0-1.2-.1-2.4-.4-3.5Z"
+                  />
+                  <path
+                    fill="#FF3D00"
+                    d="m6.3 14.7 6.6 4.8A12 12 0 0 1 32 14l5.7-5.7A20 20 0 0 0 6.3 14.7Z"
+                  />
+                  <path
+                    fill="#4CAF50"
+                    d="M24 44c5.2 0 9.8-2 13.3-5.2l-6.2-5.2a12 12 0 0 1-18.3-5.1l-6.6 5.1A20 20 0 0 0 24 44Z"
+                  />
+                  <path
+                    fill="#4285F4"
+                    d="M43.6 20.5H42V20H24v8h11.3a12 12 0 0 1-4.2 5.6l6.2 5.2A20 20 0 0 0 44 24c0-1.2-.1-2.4-.4-3.5Z"
+                  />
+                </svg>
               </a>
             </div>
           </section>
