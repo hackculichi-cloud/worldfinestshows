@@ -689,7 +689,6 @@ function App() {
       </main>
 
       <Footer
-        logoSrc={asset("logo.png")}
         onExploreAttractions={() => setActiveCategory("All Attractions")}
         onPlayVideo={() => setVideoOpen(true)}
       />
