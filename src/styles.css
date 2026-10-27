@@ -1634,3 +1634,47 @@ img {
     background-size: auto 140px;
   }
 }
+
+/* Keep the newsletter below the riders' faces. */
+.newsletter-section .photo-section-inner {
+  min-height: 650px;
+  align-items: end;
+  padding-top: 350px;
+  padding-bottom: 35px;
+  gap: 24px;
+}
+.newsletter-section .section-title {
+  align-self: end;
+  margin-bottom: 35px;
+}
+.newsletter-section .newsletter-panel {
+  background: rgba(174, 25, 83, 0.65);
+  backdrop-filter: none;
+}
+@media (max-width: 780px) {
+  .newsletter-section .photo-section-inner {
+    min-height: 700px;
+    padding-top: 320px;
+    gap: 22px;
+  }
+}
+@media (max-width: 550px) {
+  .newsletter-section {
+    background-size: auto 380px;
+    background-position: top center;
+    background-color: #0b1738;
+  }
+  .newsletter-section .photo-section-inner {
+    min-height: 0;
+    padding-top: 395px;
+    padding-bottom: 30px;
+    gap: 22px;
+  }
+  .newsletter-section .section-title {
+    align-self: stretch;
+    margin-bottom: 0;
+  }
+  .newsletter-section .newsletter-panel {
+    background: rgba(174, 25, 83, 0.7);
+  }
+}

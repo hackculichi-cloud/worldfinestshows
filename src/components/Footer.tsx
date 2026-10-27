@@ -1,4 +1,8 @@
 import {
+  Mail,
+  Link,
+  Music2,
+  Search,
   ArrowUp,
   ArrowUpRight,
   Facebook,
@@ -50,7 +54,9 @@ export function Footer({
             className="footer-links"
             aria-labelledby="footer-links-title"
           >
-            <h2 id="footer-links-title">Quick links</h2>
+            <h2 id="footer-links-title">
+              <Link size={18} aria-hidden="true" /> Quick links
+            </h2>
             <nav aria-label="Footer navigation">
               <a href="#home">Home</a>
               <a href="#events">Events</a>
@@ -72,7 +78,9 @@ export function Footer({
             className="footer-contact"
             aria-labelledby="footer-contact-title"
           >
-            <h2 id="footer-contact-title">Contact</h2>
+            <h2 id="footer-contact-title">
+              <Mail size={18} aria-hidden="true" /> Contact
+            </h2>
             <address>
               PO Box 680, Simcoe, Ontario
               <br />
@@ -143,6 +151,26 @@ export function Footer({
               >
                 <Youtube size={30} />
               </button>
+              <a
+                className="footer-social-icon social-tiktok"
+                href="https://www.tiktok.com/search?q=worlds%20finest%20shows"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Search World’s Finest Shows on TikTok"
+                title="Search on TikTok"
+              >
+                <Music2 size={27} />
+              </a>
+              <a
+                className="footer-social-icon social-google"
+                href="https://www.google.com/search?q=World%27s+Finest+Shows+Ontario"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Find World’s Finest Shows on Google"
+                title="Find us on Google"
+              >
+                <Search size={27} />
+              </a>
             </div>
           </section>
         </div>
@@ -150,9 +178,6 @@ export function Footer({
         <div className="footer-bottom">
           <div>
             <span>© {new Date().getFullYear()} World’s Finest Shows</span>
-            <small>
-              Independent development preview · Not the official website
-            </small>
           </div>
           <a className="footer-back-top" href="#home">
             Back to top <ArrowUp size={15} />

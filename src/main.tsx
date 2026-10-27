@@ -622,10 +622,10 @@ function App() {
               {signedUp ? (
                 <div className="signup-success" role="status">
                   <Check size={28} />
-                  <h3>Thanks for stopping by!</h3>
+                  <h3>Subscriptions coming soon</h3>
                   <p>
-                    You’ve tried the signup preview. No email has been sent or
-                    saved.
+                    Email subscriptions are not available yet. Please check back
+                    soon.
                   </p>
                   <button
                     onClick={() => {
@@ -660,9 +660,6 @@ function App() {
                       <ArrowRight size={22} />
                     </button>
                   </div>
-                  <small>
-                    Design preview only — signup is not connected yet.
-                  </small>
                 </form>
               )}
             </div>
