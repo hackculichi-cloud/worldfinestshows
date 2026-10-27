@@ -1,7 +1,6 @@
 import {
   Mail,
   Music2,
-  ArrowUp,
   ArrowUpRight,
   Facebook,
   Instagram,
@@ -10,16 +9,11 @@ import {
 import "./Footer.css";
 
 interface FooterProps {
-  logoSrc: string;
   onExploreAttractions: () => void;
   onPlayVideo: () => void;
 }
 
-export function Footer({
-  logoSrc,
-  onExploreAttractions,
-  onPlayVideo,
-}: FooterProps) {
+export function Footer({ onExploreAttractions, onPlayVideo }: FooterProps) {
   return (
     <footer
       id="contact"
@@ -33,20 +27,6 @@ export function Footer({
       </div>
 
       <div className="container footer-frame">
-        <a
-          className="footer-brand"
-          href="#home"
-          aria-label="World’s Finest Shows home"
-        >
-          <img
-            src={logoSrc}
-            alt="World’s Finest Shows"
-            width="260"
-            height="40"
-            loading="lazy"
-          />
-        </a>
-
         <div className="footer-grid">
           <section
             className="footer-links"
@@ -212,32 +192,6 @@ export function Footer({
               </a>
             </div>
           </section>
-        </div>
-
-        <div className="footer-bottom">
-          <div>
-            <span>© {new Date().getFullYear()} World’s Finest Shows</span>
-          </div>
-          <a
-            className="footer-back-top"
-            href="#home"
-            onClick={(event) => {
-              event.preventDefault();
-              window.history.replaceState(null, "", "#home");
-              window.scrollTo({
-                top: 0,
-                behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
-                  .matches
-                  ? "instant"
-                  : "smooth",
-              });
-              document
-                .querySelector<HTMLAnchorElement>(".site-header .brand")
-                ?.focus({ preventScroll: true });
-            }}
-          >
-            Back to top <ArrowUp size={15} />
-          </a>
         </div>
       </div>
     </footer>
