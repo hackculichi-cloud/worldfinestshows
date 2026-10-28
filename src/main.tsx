@@ -29,24 +29,21 @@ const categories = [
     name: "Kids Rides",
     image: "kids-slide.jpeg",
     alt: "The colourful Sky Slide and Fun Slide",
-    description:
-      "Big smiles for our littlest guests. Discover the rides made for younger adventurers.",
+    description: "Slides and smaller rides for our younger adventurers.",
     path: "/kids-rides/",
   },
   {
     name: "Family Rides",
     image: "carousel.jpg",
     alt: "The traditional World’s Finest Shows carousel",
-    description:
-      "Classic midway favourites to enjoy together, including the much-loved carousel.",
+    description: "Carousels and classic midway rides to enjoy together.",
     path: "/family-rides/",
   },
   {
     name: "Thrill Rides",
     image: "pharaohs-fury.jpg",
-    alt: "The Pharaoh’s Fury swinging ship ride",
-    description:
-      "A little more height. A little more excitement. Explore the thrilling side of the midway.",
+    alt: "Guests enjoying a colourful midway thrill ride",
+    description: "Higher-energy rides for guests looking for a bigger thrill.",
     path: "/thrill-rides/",
   },
   {
@@ -54,23 +51,21 @@ const categories = [
     image: "duck-pond.jpg",
     alt: "The colourful Duck Pond midway game",
     description:
-      "Step right up and try a midway classic. Find your favourite games along the midway.",
+      "Midway games, colourful prizes and a little friendly competition.",
     path: "/games/",
   },
   {
     name: "Concessions",
     image: "candy-factory.jpg",
     alt: "The Candy Factory concession stand",
-    description:
-      "Make a sweet stop for the treats and fair-day favourites that complete a day on the midway.",
+    description: "Cotton candy, sweet treats and favourite fair-day snacks.",
     path: "/concessions/",
   },
   {
     name: "Guest Amenities",
     image: "rest-area.jpg",
     alt: "A shaded guest rest area at the fair",
-    description:
-      "Take a break between adventures. Explore guest spaces and amenities at the midway.",
+    description: "Shaded tables and places to rest between rides.",
     path: "/guest-amenities/",
   },
 ];
@@ -578,6 +573,10 @@ function App() {
           >
             <div className="container">
               <SectionTitle title="Attractions" icon="icon-attractions.png" />
+              <p className="attractions-intro">
+                Rides, games and fair-day favourites. Choose a category to take
+                a closer look.
+              </p>
               <div
                 className="attraction-filters"
                 role="group"
@@ -602,12 +601,23 @@ function App() {
                   </button>
                 ))}
               </div>
+              <div
+                className="attraction-results"
+                role="status"
+                aria-live="polite"
+              >
+                <span>{activeCategory}</span>
+                <span>
+                  {filteredCategories.length}{" "}
+                  {filteredCategories.length === 1 ? "category" : "categories"}
+                </span>
+              </div>
               <div className="attraction-grid">
                 {filteredCategories.map((category) => (
                   <article key={category.name} className="attraction-card">
                     <button
                       className="attraction-image"
-                      aria-label={`Explore ${category.name}`}
+                      aria-label={`Preview ${category.name}`}
                       onClick={() => setSelected(category)}
                     >
                       <img
@@ -620,12 +630,13 @@ function App() {
                     </button>
                     <div className="attraction-copy">
                       <h3>{category.name}</h3>
+                      <p>{category.description}</p>
                       <button
                         className="show-category"
                         onClick={() => setSelected(category)}
                       >
-                        Show All{" "}
-                        <span className="sr-only">{category.name}</span>
+                        View details{" "}
+                        <span className="sr-only">about {category.name}</span>
                         <ArrowRight size={14} />
                       </button>
                     </div>
